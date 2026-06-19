@@ -1,6 +1,5 @@
 ---
-title: Welcome to Quartz
+title: nakamura0907のガイドライン
 ---
 
-This is a blank Quartz installation.
-See the [documentation](https://quartz.jzhao.xyz) for how to get started.
+これはnakamura0907のガイドラインです。

@@ -1,8 +1,9 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import { APP_BASE_PATH, APP_BASE_URL } from './src/shared/config';
 
 // https://astro.build/config
 export default defineConfig({
-    site: "https://org-nakamura0907.github.io",
-    base: "/guidelines",
+    site: APP_BASE_URL,
+    base: APP_BASE_PATH,
 });

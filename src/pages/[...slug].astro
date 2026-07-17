@@ -1,5 +1,5 @@
 ---
-import { withBasePath } from "@/shared";
+import Layout from "@/shared/ui/Layout.astro";
 import { getCollection, render } from "astro:content";
 
 export async function getStaticPaths() {
@@ -12,25 +12,8 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
-const title = entry.data.title
-	? `${entry.data.title} | nakamura0907のガイドライン`
-	: "nakamura0907のガイドライン";
 ---
 
-<html lang="ja">
-	<head>
-		<meta charset="utf-8" />
-		<link
-			rel="icon"
-			type="image/svg+xml"
-			href={withBasePath("/favicon.svg")}
-		/>
-		<link rel="icon" href={withBasePath("/favicon.ico")} />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<Content />
-	</body>
-</html>
+<Layout title={entry.data.title}>
+	<Content />
+</Layout>

@@ -1,5 +1,6 @@
 ---
 title: GitHub Actions
+order: 1
 ---
 
 ## コスト最適化

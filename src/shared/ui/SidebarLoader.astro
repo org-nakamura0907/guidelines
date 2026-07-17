@@ -1,0 +1,23 @@
+---
+import { getCollection } from "astro:content";
+import { navSections, withBasePath } from "@/shared";
+import Sidebar from "./Sidebar";
+
+const entries = await getCollection("docs");
+
+const sections = navSections
+	.map((section) => ({
+		label: section.label,
+		pages: entries
+			.filter((e) => e.id.startsWith(`${section.dir}/`))
+			.sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99))
+			.map((e) => ({
+				id: e.id,
+				title: e.data.title,
+				href: withBasePath(`/${e.id}`),
+			})),
+	}))
+	.filter((s) => s.pages.length > 0);
+---
+
+<Sidebar sections={sections} currentPath={Astro.url.pathname} client:load />

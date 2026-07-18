@@ -8,6 +8,6 @@
     },
     "jsx": "react-jsx",
     "jsxImportSource": "react",
-    "types": ["vitest/globals"]
+    "types": ["vitest/globals", "node"]
   }
 }

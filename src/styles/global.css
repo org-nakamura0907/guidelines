@@ -16,6 +16,7 @@
 	}
   html {
     @apply font-sans;
+    scroll-padding-top: 4.5rem; /* 固定ヘッダー分 (3.5rem) + 余白 */
 	}
 }
 

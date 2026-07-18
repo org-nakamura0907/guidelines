@@ -1,0 +1,35 @@
+---
+import Layout from "./Layout.astro";
+import TableOfContents from "./TableOfContents.tsx";
+
+type Heading = { depth: number; slug: string; text: string };
+
+interface Props {
+	title?: string;
+	headings?: Heading[];
+}
+
+const { title, headings = [] } = Astro.props;
+const hasToc = headings.filter((h) => h.depth === 2 || h.depth === 3).length > 0;
+---
+
+<Layout title={title}>
+	<main class={`mt-14 px-8 py-6 md:pl-72 ${hasToc ? "xl:pr-56" : ""}`}>
+		<article class="prose dark:prose-invert">
+			{title && <h1>{title}</h1>}
+			{hasToc && (
+				<TableOfContents
+					headings={headings}
+					className="not-prose mb-8 rounded-lg border border-border p-4 xl:hidden"
+					client:load
+				/>
+			)}
+			<slot />
+		</article>
+	</main>
+	{hasToc && (
+		<aside class="fixed top-14 right-0 hidden h-[calc(100vh-3.5rem)] w-56 overflow-y-auto border-l border-border px-4 py-6 xl:block">
+			<TableOfContents headings={headings} client:load />
+		</aside>
+	)}
+</Layout>

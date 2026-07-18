@@ -1,5 +1,5 @@
 ---
-import Layout from "@/shared/ui/Layout.astro";
+import DocLayout from "@/shared/ui/DocLayout.astro";
 import { getCollection, render } from "astro:content";
 
 export async function getStaticPaths() {
@@ -11,9 +11,10 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-const { Content } = await render(entry);
+const { Content, headings } = await render(entry);
+const tocHeadings = entry.data.toc ? headings : [];
 ---
 
-<Layout title={entry.data.title}>
+<DocLayout title={entry.data.title} headings={tocHeadings}>
 	<Content />
-</Layout>
+</DocLayout>

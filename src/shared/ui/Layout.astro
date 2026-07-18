@@ -34,10 +34,6 @@ const pageTitle = title ? `${title} | ${SITE_TITLE}` : SITE_TITLE;
 	</head>
 	<body class="min-h-screen">
 		<AppShellLoader />
-		<main class="mt-14 px-8 py-6 md:pl-72">
-			<article class="prose dark:prose-invert">
-				<slot />
-			</article>
-		</main>
+		<slot />
 	</body>
 </html>

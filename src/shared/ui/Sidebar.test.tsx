@@ -25,9 +25,9 @@ describe("Sidebar", () => {
           isOpen={false}
         />,
       );
-      expect(
-        screen.getByRole("link", { name: "GitHub Actions" }),
-      ).toHaveClass("bg-accent");
+      expect(screen.getByRole("link", { name: "GitHub Actions" })).toHaveClass(
+        "bg-accent",
+      );
     });
 
     it("末尾スラッシュありのパスと一致するリンクをアクティブ表示する", () => {
@@ -38,14 +38,18 @@ describe("Sidebar", () => {
           isOpen={false}
         />,
       );
-      expect(
-        screen.getByRole("link", { name: "GitHub Actions" }),
-      ).toHaveClass("bg-accent");
+      expect(screen.getByRole("link", { name: "GitHub Actions" })).toHaveClass(
+        "bg-accent",
+      );
     });
 
     it("異なるパスのリンクを非アクティブ表示する", () => {
       render(
-        <Sidebar sections={sections} currentPath="/guidelines/" isOpen={false} />,
+        <Sidebar
+          sections={sections}
+          currentPath="/guidelines/"
+          isOpen={false}
+        />,
       );
       expect(
         screen.getByRole("link", { name: "GitHub Actions" }),

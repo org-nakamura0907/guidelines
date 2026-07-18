@@ -36,7 +36,9 @@ describe("AppShell", () => {
     const { container } = render(
       <AppShell sections={sections} currentPath="/" />,
     );
-    fireEvent.click(screen.getByRole("button", { name: "メニューを開く/閉じる" }));
+    fireEvent.click(
+      screen.getByRole("button", { name: "メニューを開く/閉じる" }),
+    );
     expect(container.lastChild).toHaveClass("translate-x-0");
   });
 
@@ -44,7 +46,9 @@ describe("AppShell", () => {
     const { container } = render(
       <AppShell sections={sections} currentPath="/" />,
     );
-    fireEvent.click(screen.getByRole("button", { name: "メニューを開く/閉じる" }));
+    fireEvent.click(
+      screen.getByRole("button", { name: "メニューを開く/閉じる" }),
+    );
     expect(container.querySelector(".inset-0")).toBeInTheDocument();
   });
 
@@ -52,7 +56,9 @@ describe("AppShell", () => {
     const { container } = render(
       <AppShell sections={sections} currentPath="/" />,
     );
-    fireEvent.click(screen.getByRole("button", { name: "メニューを開く/閉じる" }));
+    fireEvent.click(
+      screen.getByRole("button", { name: "メニューを開く/閉じる" }),
+    );
     fireEvent.click(container.querySelector(".inset-0")!);
     expect(container.lastChild).toHaveClass("-translate-x-full");
   });

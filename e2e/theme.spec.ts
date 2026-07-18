@@ -12,17 +12,13 @@ test.describe("ダークモード", () => {
     expect(classList === null || typeof classList === "string").toBe(true);
   });
 
-  test("ダークテーマを選択すると dark クラスが適用される", async ({
-    page,
-  }) => {
+  test("ダークテーマを選択すると dark クラスが適用される", async ({ page }) => {
     await page.getByRole("button", { name: "テーマを切り替える" }).click();
     await page.getByText("ダーク").click();
     await expect(page.locator("html")).toHaveClass(/dark/);
   });
 
-  test("ライトテーマを選択すると dark クラスが除去される", async ({
-    page,
-  }) => {
+  test("ライトテーマを選択すると dark クラスが除去される", async ({ page }) => {
     // まずダークにしてからライトに切り替える
     await page.getByRole("button", { name: "テーマを切り替える" }).click();
     await page.getByText("ダーク").click();

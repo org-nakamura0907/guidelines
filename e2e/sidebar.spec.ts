@@ -31,9 +31,7 @@ test.describe("サイドバー開閉（モバイル）", () => {
     page,
   }) => {
     await page.goto("/guidelines/");
-    await page
-      .getByRole("button", { name: "メニューを開く/閉じる" })
-      .click();
+    await page.getByRole("button", { name: "メニューを開く/閉じる" }).click();
     const nav = page.getByRole("navigation").filter({ hasText: "CI/CD" });
     await expect(nav).toBeInViewport();
   });

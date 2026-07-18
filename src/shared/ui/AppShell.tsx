@@ -2,7 +2,7 @@ import { useState } from "react";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 
-export type NavItem = {
+type NavItem = {
   id: string;
   title: string;
   href: string;

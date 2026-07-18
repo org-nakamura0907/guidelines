@@ -23,11 +23,19 @@ const pageTitle = title ? `${title} | ${SITE_TITLE}` : SITE_TITLE;
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{pageTitle}</title>
+		<script is:inline>
+			const theme = localStorage.getItem("theme") ?? "system";
+			const isDark =
+				theme === "dark" ||
+				(theme === "system" &&
+					window.matchMedia("(prefers-color-scheme: dark)").matches);
+			if (isDark) document.documentElement.classList.add("dark");
+		</script>
 	</head>
 	<body class="min-h-screen">
 		<AppShellLoader />
 		<main class="mt-14 px-8 py-6 md:pl-72">
-			<article class="prose">
+			<article class="prose dark:prose-invert">
 				<slot />
 			</article>
 		</main>

@@ -18,18 +18,18 @@ const sections = navSections
 	{
 		sections.map((section) => (
 			<section>
-				<h2 class="mb-4 text-lg font-semibold text-gray-900">
+				<h2 class="mb-4 text-lg font-semibold text-foreground">
 					{section.label}
 				</h2>
 				<div class="grid gap-4 sm:grid-cols-2">
 					{section.pages.map((page) => (
 						<a
 							href={withBasePath(`/${page.id}`)}
-							class="block rounded-lg border border-gray-200 p-4 transition-colors hover:border-gray-300 hover:bg-gray-50"
+							class="block rounded-lg border border-border p-4 transition-colors hover:bg-accent"
 						>
-							<p class="font-medium text-gray-900">{page.data.title}</p>
+							<p class="font-medium text-foreground">{page.data.title}</p>
 							{page.data.description && (
-								<p class="mt-1 text-sm text-gray-500">
+								<p class="mt-1 text-sm text-muted-foreground">
 									{page.data.description}
 								</p>
 							)}

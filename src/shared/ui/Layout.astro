@@ -1,6 +1,6 @@
 ---
-import { withBasePath } from "@/shared";
-import SidebarLoader from "./SidebarLoader.astro";
+import { withBasePath, SITE_TITLE } from "@/shared";
+import AppShellLoader from "./AppShellLoader.astro";
 import "../../styles/global.css";
 
 interface Props {
@@ -8,9 +8,7 @@ interface Props {
 }
 
 const { title } = Astro.props;
-const pageTitle = title
-	? `${title} | nakamura0907のガイドライン`
-	: "nakamura0907のガイドライン";
+const pageTitle = title ? `${title} | ${SITE_TITLE}` : SITE_TITLE;
 ---
 
 <html lang="ja">
@@ -27,8 +25,8 @@ const pageTitle = title
 		<title>{pageTitle}</title>
 	</head>
 	<body class="min-h-screen">
-		<SidebarLoader />
-		<main class="px-8 py-6 pt-20 md:pl-72 md:pt-6">
+		<AppShellLoader />
+		<main class="mt-14 px-8 py-6 md:pl-72">
 			<article class="prose">
 				<slot />
 			</article>

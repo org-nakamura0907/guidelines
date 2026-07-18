@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import { navSections, withBasePath } from "@/shared";
-import Sidebar from "./Sidebar";
+import AppShell from "./AppShell";
 
 const entries = await getCollection("docs");
 
@@ -20,4 +20,4 @@ const sections = navSections
 	.filter((s) => s.pages.length > 0);
 ---
 
-<Sidebar sections={sections} currentPath={Astro.url.pathname} client:load />
+<AppShell sections={sections} currentPath={Astro.url.pathname} client:load />

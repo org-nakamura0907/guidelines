@@ -16,7 +16,11 @@ const pageTitle = title
 <html lang="ja">
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href={withBasePath("/favicon.svg")} />
+		<link
+			rel="icon"
+			type="image/svg+xml"
+			href={withBasePath("/favicon.svg")}
+		/>
 		<link rel="icon" href={withBasePath("/favicon.ico")} />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
@@ -25,7 +29,9 @@ const pageTitle = title
 	<body class="min-h-screen">
 		<SidebarLoader />
 		<main class="px-8 py-6 pt-20 md:pl-72 md:pt-6">
-			<slot />
+			<article class="prose">
+				<slot />
+			</article>
 		</main>
 	</body>
 </html>

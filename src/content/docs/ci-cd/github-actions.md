@@ -51,11 +51,11 @@ jobs:
 サードパーティーアクションを使用する場合はフルコミットSHAを指定する。
 
 ```yaml
-    steps:
-    #   - uses: actions/checkout@v6.0.3
-      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
-        with:
-          fetch-depth: 0 # Fetch all history for git info
+steps:
+  #   - uses: actions/checkout@v6.0.3
+  - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+    with:
+      fetch-depth: 0 # Fetch all history for git info
 ```
 
 タグやブランチよりも信頼性が高くなる。

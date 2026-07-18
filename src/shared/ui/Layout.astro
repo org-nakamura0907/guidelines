@@ -4,7 +4,7 @@ import AppShellLoader from "./AppShellLoader.astro";
 import "../../styles/global.css";
 
 interface Props {
-	title?: string;
+  title?: string;
 }
 
 const { title } = Astro.props;
@@ -12,28 +12,24 @@ const pageTitle = title ? `${title} | ${SITE_TITLE}` : SITE_TITLE;
 ---
 
 <html lang="ja">
-	<head>
-		<meta charset="utf-8" />
-		<link
-			rel="icon"
-			type="image/svg+xml"
-			href={withBasePath("/favicon.svg")}
-		/>
-		<link rel="icon" href={withBasePath("/favicon.ico")} />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{pageTitle}</title>
-		<script is:inline>
-			const theme = localStorage.getItem("theme") ?? "system";
-			const isDark =
-				theme === "dark" ||
-				(theme === "system" &&
-					window.matchMedia("(prefers-color-scheme: dark)").matches);
-			if (isDark) document.documentElement.classList.add("dark");
-		</script>
-	</head>
-	<body class="min-h-screen">
-		<AppShellLoader />
-		<slot />
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href={withBasePath("/favicon.svg")} />
+    <link rel="icon" href={withBasePath("/favicon.ico")} />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+    <script is:inline>
+      const theme = localStorage.getItem("theme") ?? "system";
+      const isDark =
+        theme === "dark" ||
+        (theme === "system" &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches);
+      if (isDark) document.documentElement.classList.add("dark");
+    </script>
+  </head>
+  <body class="min-h-screen">
+    <AppShellLoader />
+    <slot />
+  </body>
 </html>

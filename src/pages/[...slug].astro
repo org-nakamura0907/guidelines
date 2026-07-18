@@ -3,11 +3,11 @@ import DocLayout from "@/shared/ui/DocLayout.astro";
 import { getCollection, render } from "astro:content";
 
 export async function getStaticPaths() {
-	const entries = await getCollection("docs");
-	return entries.map((entry) => ({
-		params: { slug: entry.id === "index" ? undefined : entry.id },
-		props: { entry },
-	}));
+  const entries = await getCollection("docs");
+  return entries.map((entry) => ({
+    params: { slug: entry.id === "index" ? undefined : entry.id },
+    props: { entry },
+  }));
 }
 
 const { entry } = Astro.props;
@@ -16,5 +16,5 @@ const tocHeadings = entry.data.toc ? headings : [];
 ---
 
 <DocLayout title={entry.data.title} headings={tocHeadings}>
-	<Content />
+  <Content />
 </DocLayout>

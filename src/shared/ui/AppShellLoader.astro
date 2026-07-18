@@ -6,18 +6,18 @@ import AppShell from "./AppShell";
 const entries = await getCollection("docs");
 
 const sections = navSections
-	.map((section) => ({
-		label: section.label,
-		pages: entries
-			.filter((e) => e.id.startsWith(`${section.dir}/`))
-			.sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99))
-			.map((e) => ({
-				id: e.id,
-				title: e.data.title,
-				href: withBasePath(`/${e.id}`),
-			})),
-	}))
-	.filter((s) => s.pages.length > 0);
+  .map((section) => ({
+    label: section.label,
+    pages: entries
+      .filter((e) => e.id.startsWith(`${section.dir}/`))
+      .sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99))
+      .map((e) => ({
+        id: e.id,
+        title: e.data.title,
+        href: withBasePath(`/${e.id}`),
+      })),
+  }))
+  .filter((s) => s.pages.length > 0);
 ---
 
 <AppShell sections={sections} currentPath={Astro.url.pathname} client:load />

@@ -5,38 +5,38 @@ import { navSections, withBasePath } from "@/shared";
 const entries = await getCollection("docs");
 
 const sections = navSections
-	.map((section) => ({
-		label: section.label,
-		pages: entries
-			.filter((e) => e.id.startsWith(`${section.dir}/`))
-			.sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99)),
-	}))
-	.filter((s) => s.pages.length > 0);
+  .map((section) => ({
+    label: section.label,
+    pages: entries
+      .filter((e) => e.id.startsWith(`${section.dir}/`))
+      .sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99)),
+  }))
+  .filter((s) => s.pages.length > 0);
 ---
 
 <div class="not-prose space-y-8">
-	{
-		sections.map((section) => (
-			<section>
-				<h2 class="mb-4 text-lg font-semibold text-foreground">
-					{section.label}
-				</h2>
-				<div class="grid gap-4 sm:grid-cols-2">
-					{section.pages.map((page) => (
-						<a
-							href={withBasePath(`/${page.id}`)}
-							class="block rounded-lg border border-border p-4 transition-colors hover:bg-accent"
-						>
-							<p class="font-medium text-foreground">{page.data.title}</p>
-							{page.data.description && (
-								<p class="mt-1 text-sm text-muted-foreground">
-									{page.data.description}
-								</p>
-							)}
-						</a>
-					))}
-				</div>
-			</section>
-		))
-	}
+  {
+    sections.map((section) => (
+      <section>
+        <h2 class="text-foreground mb-4 text-lg font-semibold">
+          {section.label}
+        </h2>
+        <div class="grid gap-4 sm:grid-cols-2">
+          {section.pages.map((page) => (
+            <a
+              href={withBasePath(`/${page.id}`)}
+              class="border-border hover:bg-accent block rounded-lg border p-4 transition-colors"
+            >
+              <p class="text-foreground font-medium">{page.data.title}</p>
+              {page.data.description && (
+                <p class="text-muted-foreground mt-1 text-sm">
+                  {page.data.description}
+                </p>
+              )}
+            </a>
+          ))}
+        </div>
+      </section>
+    ))
+  }
 </div>

@@ -19,6 +19,7 @@ const pageTitle = title ? `${title} | ${SITE_TITLE}` : SITE_TITLE;
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
+    <link rel="stylesheet" href={withBasePath("/pagefind/pagefind-ui.css")} />
     <script is:inline>
       const theme = localStorage.getItem("theme") ?? "system";
       const isDark =

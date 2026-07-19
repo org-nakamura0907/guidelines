@@ -1,6 +1,7 @@
 import { SITE_TITLE } from "@/shared/config";
 import { withBasePath } from "@/shared/lib";
 import ThemeToggle from "./ThemeToggle";
+import Search from "@/features/search/Search";
 
 type Props = {
   onMenuToggle: () => void;
@@ -36,7 +37,8 @@ export default function Header({ onMenuToggle }: Props) {
       >
         {SITE_TITLE}
       </a>
-      <div className="ml-auto">
+      <div className="ml-auto flex items-center gap-2">
+        <Search />
         <ThemeToggle />
       </div>
     </header>

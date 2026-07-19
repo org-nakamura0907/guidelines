@@ -131,3 +131,24 @@
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
 }
+
+/* PagefindUI テーマ変数 */
+:root {
+  --pagefind-ui-scale: 0.9;
+  --pagefind-ui-primary: oklch(0.205 0 0);
+  --pagefind-ui-text: oklch(0.145 0 0);
+  --pagefind-ui-background: oklch(1 0 0);
+  --pagefind-ui-border: oklch(0.922 0 0);
+  --pagefind-ui-tag: oklch(0.97 0 0);
+  --pagefind-ui-border-width: 1px;
+  --pagefind-ui-border-radius: 0.5rem;
+  --pagefind-ui-font: "Geist Variable", sans-serif;
+}
+
+.dark {
+  --pagefind-ui-primary: oklch(0.922 0 0);
+  --pagefind-ui-text: oklch(0.985 0 0);
+  --pagefind-ui-background: oklch(0.145 0 0);
+  --pagefind-ui-border: oklch(1 0 0 / 10%);
+  --pagefind-ui-tag: oklch(0.269 0 0);
+}

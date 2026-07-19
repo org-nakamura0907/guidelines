@@ -9,6 +9,7 @@ const docs = defineCollection({
     description: z.string().optional(),
     order: z.number().optional(),
     toc: z.boolean().default(true),
+    index: z.boolean().default(true),
   }),
 });
 

@@ -7,16 +7,20 @@ type Heading = { depth: number; slug: string; text: string };
 interface Props {
   title?: string;
   headings?: Heading[];
+  index?: boolean;
 }
 
-const { title, headings = [] } = Astro.props;
+const { title, headings = [], index = true } = Astro.props;
 const hasToc =
   headings.filter((h) => h.depth === 2 || h.depth === 3).length > 0;
 ---
 
 <Layout title={title}>
   <main class={`mt-14 px-8 py-6 md:pl-72 ${hasToc ? "xl:pr-56" : ""}`}>
-    <article class="prose dark:prose-invert break-words">
+    <article
+      class="prose dark:prose-invert break-words"
+      {...index && { "data-pagefind-body": true }}
+    >
       {title && <h1>{title}</h1>}
       {
         hasToc && (

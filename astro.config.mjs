@@ -30,6 +30,12 @@ export default defineConfig({
     integrations: [mdx(), react()],
     vite: {
         plugins: [tailwindcss()],
+        build: {
+            rollupOptions: {
+                // pagefind はビルド後に生成されるためバンドル対象から除外
+                external: [/\/pagefind\//],
+            },
+        },
     },
     markdown: {
         processor: unified({ rehypePlugins: [rehypeTaskListA11y] }),

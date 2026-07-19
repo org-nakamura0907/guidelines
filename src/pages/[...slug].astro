@@ -15,6 +15,10 @@ const { Content, headings } = await render(entry);
 const tocHeadings = entry.data.toc ? headings : [];
 ---
 
-<DocLayout title={entry.data.title} headings={tocHeadings}>
+<DocLayout
+  title={entry.data.title}
+  headings={tocHeadings}
+  index={entry.data.index}
+>
   <Content />
 </DocLayout>

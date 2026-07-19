@@ -10,34 +10,34 @@ import { visit } from "unist-util-visit";
 // GFMタスクリストの <input type="checkbox" disabled> はラベルなしでレンダリングされるため
 // スクリーンリーダーから隠す (装飾的な状態インジケーターとして扱う)
 function rehypeTaskListA11y() {
-    return (/** @type {any} */ tree) => {
-        visit(tree, "element", (node) => {
-            if (
-                node.tagName === "input" &&
-                node.properties?.type === "checkbox" &&
-                "disabled" in node.properties
-            ) {
-                node.properties["aria-hidden"] = "true";
-            }
-        });
-    };
+  return (/** @type {any} */ tree) => {
+    visit(tree, "element", (node) => {
+      if (
+        node.tagName === "input" &&
+        node.properties?.type === "checkbox" &&
+        "disabled" in node.properties
+      ) {
+        node.properties["aria-hidden"] = "true";
+      }
+    });
+  };
 }
 
 // https://astro.build/config
 export default defineConfig({
-    site: APP_BASE_URL,
-    base: APP_BASE_PATH,
-    integrations: [mdx(), react()],
-    vite: {
-        plugins: [tailwindcss()],
-        build: {
-            rollupOptions: {
-                // pagefind はビルド後に生成されるためバンドル対象から除外
-                external: [/\/pagefind\//],
-            },
-        },
+  site: APP_BASE_URL,
+  base: APP_BASE_PATH,
+  integrations: [mdx(), react()],
+  vite: {
+    plugins: [tailwindcss()],
+    build: {
+      rollupOptions: {
+        // pagefind はビルド後に生成されるためバンドル対象から除外
+        external: [/\/pagefind\//],
+      },
     },
-    markdown: {
-        processor: unified({ rehypePlugins: [rehypeTaskListA11y] }),
-    },
+  },
+  markdown: {
+    processor: unified({ rehypePlugins: [rehypeTaskListA11y] }),
+  },
 });

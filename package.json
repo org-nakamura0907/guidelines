@@ -19,7 +19,7 @@
     "knip": "knip"
   },
   "lint-staged": {
-    "*.{ts,tsx,astro,css,json,md}": "prettier --write",
+    "*.{ts,tsx,astro,css,json,md,mjs}": "prettier --write",
     "*.{ts,tsx,astro}": "eslint --fix"
   },
   "dependencies": {

@@ -18,7 +18,7 @@ const hasToc =
 <Layout title={title}>
   <main class={`mt-14 px-8 py-6 md:pl-72 ${hasToc ? "xl:pr-56" : ""}`}>
     <article
-      class="prose dark:prose-invert break-words"
+      class="prose xl:prose-lg dark:prose-invert mx-auto break-words"
       {...index && { "data-pagefind-body": true }}
     >
       {title && <h1>{title}</h1>}

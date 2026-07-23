@@ -32,6 +32,46 @@ title: エラーハンドリング
   - 例: `domain: authentication`, `reason: INVALID_CREDENTIALS`
   - 実装の詳細は隠蔽し、`NULLPOINTER~`や`SQL~`といった理由にはしない
 
+```json
+{
+  "status": 400,
+  "detail": "1つ以上の入力値が不正です。",
+  "instance": "/users",
+  "domain": "user-service",
+  "reason": "VALIDATION_FAILED",
+  "errors": [
+    {
+      "field": "email",
+      "reason": "EMAIL_INVALID_FORMAT",
+      "detail": "有効なメールアドレスを入力してください"
+    },
+    {
+      "field": "name",
+      "reason": "NAME_REQUIRED",
+      "detail": "名前は必須項目です"
+    }
+  ]
+}
+```
+
+```json
+{
+  "status": 403,
+  "detail": "ファイルが存在しないかアクセス権がありません。",
+  "instance": "/files/secret.pdf",
+  "domain": "authorization",
+  "reason": "PERMISSION_DENIED"
+}
+```
+
+```json
+{
+  "status": 500,
+  "detail": "予期せぬエラーが発生しました。しばらく時間をおいてから再度お試しください。",
+  "instance": "/users"
+}
+```
+
 #### 参考
 
 - [RFC 7807 - Problem Details for HTTP APIs](https://datatracker.ietf.org/doc/html/rfc7807)
@@ -42,3 +82,12 @@ title: エラーハンドリング
 - ユーザーからの問い合わせが想定されるシステムの場合
   - エラーメッセージにエラー参照IDを表示することを検討する
   - エラーレスポンスにリクエストIDを含めることを検討する
+
+```json
+{
+  "status": 500,
+  "detail": "予期せぬエラーが発生しました。しばらく時間をおいてから再度お試しください。",
+  "instance": "/users",
+  "requestId": "xxx"
+}
+```

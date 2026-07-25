@@ -7,6 +7,8 @@ import react from "@astrojs/react";
 import { unified } from "@astrojs/markdown-remark";
 import { visit } from "unist-util-visit";
 
+import expressiveCode from "astro-expressive-code";
+
 // GFMタスクリストの <input type="checkbox" disabled> はラベルなしでレンダリングされるため
 // スクリーンリーダーから隠す (装飾的な状態インジケーターとして扱う)
 function rehypeTaskListA11y() {
@@ -27,7 +29,16 @@ function rehypeTaskListA11y() {
 export default defineConfig({
   site: APP_BASE_URL,
   base: APP_BASE_PATH,
-  integrations: [mdx(), react()],
+  integrations: [
+    expressiveCode({
+      themes: ["github-light", "github-dark"],
+      useDarkModeMediaQuery: false,
+      themeCssSelector: (theme) =>
+        theme.type === "dark" ? ":root.dark" : ":root:not(.dark)",
+    }),
+    mdx(),
+    react(),
+  ],
   vite: {
     plugins: [tailwindcss()],
     build: {

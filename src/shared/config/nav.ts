@@ -6,4 +6,5 @@ type NavSection = {
 export const navSections: NavSection[] = [
   { label: "CI/CD", dir: "ci-cd" },
   { label: "アーキテクチャ", dir: "architecture" },
+  { label: "開発", dir: "development" },
 ];
